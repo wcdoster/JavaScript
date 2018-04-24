@@ -67,11 +67,6 @@ const numberOfSales = {}
 salespeople.forEach(
     salesman => {
         numberOfSales[salesman] = 0;
-    }
-)
-
-salespeople.forEach(
-    salesman => {
         vehicles.forEach(
             vehicle => {
                 if (salesman === vehicle.sales_agent.last_name){
@@ -102,12 +97,6 @@ const salespersonProfit = {}
 salespeople.forEach(
     salesman => {
         salespersonProfit[salesman] = 0;
-    }
-)
-
-
-salespeople.forEach(
-    salesman => {
         vehicles.forEach(
             vehicle => {
                 if (salesman === vehicle.sales_agent.last_name){
@@ -145,17 +134,11 @@ vehicles.forEach(
 
 const modelCounter = {}
 
-models.forEach(
-    model => {
-        modelCounter[model] = 0
-    }
-)
-
 console.log(models)
-
 
 models.forEach(
     currentModel => {
+        modelCounter[currentModel] = 0
         vehicles.forEach(
             car => {
                 if (currentModel === car.vehicle.model) {
@@ -198,11 +181,6 @@ const bankCounter = {}
 banks.forEach(
     bank => {
         bankCounter[bank] = 0
-    }
-)
-
-banks.forEach(
-    bank => {
         vehicles.forEach(
             car => {
                 if (bank === car.credit.credit_provider) {
