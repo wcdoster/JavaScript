@@ -53,7 +53,7 @@ console.log(topMonth)
 
 salespeople = []
 
-vehicles.map(
+vehicles.forEach(
     vehicle => {
         if(salespeople.indexOf(vehicle.sales_agent.last_name) < 0) {
             salespeople.push(vehicle.sales_agent.last_name)
