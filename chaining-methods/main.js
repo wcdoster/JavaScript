@@ -15,5 +15,9 @@ console.log(integers.sort((a, b) => {return b-a}).filter(
     integer => {
         return (integer * 1.5) - 1
     }
+).reduce(
+    (current, next) => {
+        return current + next
+    }
 )
 )
