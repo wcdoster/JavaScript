@@ -12,6 +12,7 @@ console.log(totalProfit)
 // In which month did they sell the most cars?
 
 
+
 const monthCounter = {
     "01": 0,
     "02": 0,
@@ -164,42 +165,71 @@ console.log(topModel)
 
 // Which bank provided the most loans to our customers
 
-let banks = []
 
-vehicles.forEach(
-    car => {
-        if (banks.indexOf(car.credit.credit_provider) < 0) {
-            banks.push(car.credit.credit_provider)
-        }
+const banks = vehicles.reduce((l, s) => {
+    const key = s.credit.credit_provider
+
+    if (!l.has(key)) {
+        l.set(key, 1)
+    } else {
+        let current = l.get(key)
+        l.set(key, current + 1)
     }
-)
+    return l
+}, new Map())
 
 console.log(banks)
 
-const bankCounter = {}
+const arrayOfBanks = [...banks.entries()]
 
-banks.forEach(
-    bank => {
-        bankCounter[bank] = 0
-        vehicles.forEach(
-            car => {
-                if (bank === car.credit.credit_provider) {
-                    bankCounter[bank] += 1
-                }
-            }
-        )
-    }
+console.log(arrayOfBanks)
+
+const sortedArrayOfBanks = arrayOfBanks.sort(
+    (c, p) => p[1] - c[1]
 )
 
+const topBanks = sortedArrayOfBanks[0]
 
-console.log(bankCounter)
+console.log(topBanks)
 
-let topBank = banks[0]
 
-for (let bank in bankCounter) {
-    if (bankCounter[bank] > bankCounter[topBank]) {
-        topBank = bank
-    }
-}
 
-console.log(topBank)
+// let banks = []
+
+// vehicles.forEach(
+//     car => {
+//         if (banks.indexOf(car.credit.credit_provider) < 0) {
+//             banks.push(car.credit.credit_provider)
+//         }
+//     }
+// )
+
+// console.log(banks)
+
+// const bankCounter = {}
+
+// banks.forEach(
+//     bank => {
+//         bankCounter[bank] = 0
+//         vehicles.forEach(
+//             car => {
+//                 if (bank === car.credit.credit_provider) {
+//                     bankCounter[bank] += 1
+//                 }
+//             }
+//         )
+//     }
+// )
+
+
+// console.log(bankCounter)
+
+// let topBank = banks[0]
+
+// for (let bank in bankCounter) {
+//     if (bankCounter[bank] > bankCounter[topBank]) {
+//         topBank = bank
+//     }
+// }
+
+// console.log(topBank)
